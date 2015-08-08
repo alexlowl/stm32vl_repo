@@ -40,11 +40,11 @@ int main(int argc, char* argv[])
 	GPIO_InitTypeDef GPIO_InitStructure;
 
 	/* === (1) Enable Peripheral Clocks === */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 
 	/* === (2) Configure Pins for PORTC to be output === */
 	GPIO_StructInit(&GPIO_InitStructure);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
 		static int ledval = 0;
 
 		/* === (4) toggle led === */
-		GPIO_WriteBit(GPIOC, GPIO_Pin_9, (ledval) ? Bit_SET : Bit_RESET);
+		GPIO_WriteBit(GPIOA, GPIO_Pin_8, (ledval) ? Bit_SET : Bit_RESET);
 		ledval = 1 - ledval;
 
 		Delay(250);     // wait 250ms
